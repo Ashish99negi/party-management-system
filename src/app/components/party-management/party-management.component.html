@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Party-list</h1>
+
+  <button
+    class="create-btn"
+    mat-raised-button
+    type="button"
+    (click)="createParty()"
+  >
+    Create Party
+  </button>
+</div>
+<div class="mat-elevation-z8">
+  <div *ngIf="parties.length === 0" class="no-data-message">
+    No parties available, Create new parties.
+  </div>
+  <table
+    mat-table
+    *ngIf="parties.length > 0"
+    [dataSource]="parties"
+    class="mat-table"
+  >
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let party">{{ party.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let party">{{ party.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company_name">
+      <th mat-header-cell *matHeaderCellDef>Company Name</th>
+      <td mat-cell *matCellDef="let party">{{ party.company_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobile_no">
+      <th mat-header-cell *matHeaderCellDef>Mobile No</th>
+      <td mat-cell *matCellDef="let party">{{ party.mobile_no }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let party">{{ party.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let party">
+        <button mat-icon-button (click)="viewParty(party)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button (click)="editParty(party)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteParty(party)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

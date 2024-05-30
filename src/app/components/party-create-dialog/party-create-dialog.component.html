@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Create Party</h1>
+<div mat-dialog-content>
+  <form [formGroup]="createPartyForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Company Name</mat-label>
+      <input matInput formControlName="company_name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Mobile No</mat-label>
+      <input matInput formControlName="mobile_no" type="tel" pattern="[0-9]*" />
+      <mat-error
+        *ngIf="createPartyForm.controls['mobile_no'].hasError('required')"
+      >
+        Mobile number is required.
+      </mat-error>
+      <mat-error
+        *ngIf="createPartyForm.controls['mobile_no'].hasError('pattern')"
+      >
+        Only numbers are allowed.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          createPartyForm.controls['mobile_no'].hasError('minlength') ||
+          createPartyForm.controls['mobile_no'].hasError('maxlength')
+        "
+      >
+        Mobile number must be exactly 10 digits.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="createPartyForm.controls['email'].hasError('required')">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="createPartyForm.controls['email'].hasError('email')">
+        Invalid email format.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Gstin</mat-label>
+      <input matInput formControlName="gstin" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="!createPartyForm.valid" (click)="onSubmit()">
+    Create
+  </button>
+</div>

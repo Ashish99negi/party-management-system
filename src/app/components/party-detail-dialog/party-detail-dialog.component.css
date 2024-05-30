@@ -1,0 +1,12 @@
+.party-details-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.party-details-list li {
+  margin-bottom: 8px;
+}
+
+.party-details-list li strong {
+  margin-right: 8px;
+}

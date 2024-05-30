@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Edit Party</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editForm">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Company Name</mat-label>
+      <input matInput formControlName="company_name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mobile No</mat-label>
+      <input matInput formControlName="mobile_no" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Gstin</mat-label>
+      <input matInput formControlName="gstin" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSave()" [disabled]="!editForm.valid">
+    Save
+  </button>
+</div>

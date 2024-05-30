@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Party Details</h1>
+<div mat-dialog-content>
+  <ul class="party-details-list">
+    <li><strong>ID:</strong> {{ data.id }}</li>
+    <li><strong>Name:</strong> {{ data.name }}</li>
+    <li><strong>Company Name:</strong> {{ data.company_name }}</li>
+    <li><strong>Mobile No:</strong> {{ data.mobile_no }}</li>
+    <li><strong>Email:</strong> {{ data.email }}</li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</div>
